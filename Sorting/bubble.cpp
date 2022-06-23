@@ -12,7 +12,7 @@ int main() {
   // check file existence
   //std::cout << file_exists(filename) << std::endl;
 
-  ReadNumbers(filename, '\n', numbers);
+  ReadNumbers(filename, '\n', numbers); /// test
 
   // Output the numbers
   //std::cout << "Numbers read:\n";
