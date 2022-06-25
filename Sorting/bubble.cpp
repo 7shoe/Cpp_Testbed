@@ -8,7 +8,7 @@
 #include <cmath>        // round 
 #include "load.h"
 
-#define MAX_OUTPUT 100
+#define MAX_OUTPUT 20
 
 struct myclass {
   bool operator() (int i,int j) { return (i<j);}
@@ -40,33 +40,27 @@ void bubble_sort(IntVector& numbers){
  * 
  */
 int partition(IntVector& numbers, int i, int j){
-  int pivot, l, tmp;
-  pivot = numbers[j];
+  int x = numbers[j];
+  int l = i-1;
+  int tmp; 
 
   // temporary pivot
-  l = i - 1;
-
-  // loop
-  for(int k=0; k < j-1; k++){
-    // pivot if current element is less or equal to pivot
-    if (numbers[k] <= pivot) {
-      l++; 
-
-      //swap current element
+  for (int k=i; k < j; k++) {
+    if (numbers[k] <= x) {
+      l++;
+      // swap
       tmp = numbers[l];
       numbers[l] = numbers[k];
-      numbers[k] = tmp; 
+      numbers[k] = tmp;
     }
   }
 
-  // move pivot to correct position
-  l++; 
+  // swap
+  tmp = numbers[l+1];
+  numbers[l+1] = numbers[j];
+  numbers[j] = tmp;
 
-  tmp = numbers[l];
-  numbers[l] = numbers[j];
-  numbers[j] = tmp; 
-
-  return l;
+  return l+1;
 }
 
 
@@ -75,19 +69,41 @@ int partition(IntVector& numbers, int i, int j){
  *
  * @param numbers IntVector of numbers
  */
-void quick_sort(IntVector& numbers, int i = -1, int j = -1){
+void quicksort(IntVector& numbers, int i, int j){
 
-  int n = numbers.size();
-  if (i==-1){
-    i = 0;
-    j = n-1;
-  }
-
-  if(i < j && i >= 0) {
+  if(i < j) {
     int p = partition(numbers, i, j);
-    quick_sort(numbers, i, p-1);
-    quick_sort(numbers, p+1, j);
+    quicksort(numbers, i, p-1);
+    quicksort(numbers, p+1, j);
   }
+}
+
+
+/**
+ * Merge Sort of list/array of integers
+ *
+ * @param numbers IntVector of numbers
+ */
+void mergesort(IntVector& numbers, int i, int j){
+  ;
+}
+
+/**
+ *merge two sub-list/sub-array of integers
+ *
+ * @param numbers IntVector of numbers
+ */
+void merge(IntVector& numbers, int i, int j){
+  ;
+}
+
+/**
+ *split into two sub-list/sub-array of integers
+ *
+ * @param numbers IntVector of numbers
+ */
+void split(IntVector& numbers, int i, int j){
+  ;
 }
 
 int main() {
@@ -119,7 +135,7 @@ int main() {
 
   // gold standard of sorting: std::sort()
   //std::sort (numbers_vec.begin(), numbers_vec.end(), myobject);
-  quick_sort(numbers);
+  quicksort(numbers, 0, numbers.size());
 
   // stop time 
   std::chrono::high_resolution_clock::time_point t2 = std::chrono::high_resolution_clock::now();
@@ -130,8 +146,8 @@ int main() {
 
   // Output the numbers
   std::cout << "\nNumbers read:\n";
-  for (int i=0; i < numbers_vec.size() && i < MAX_OUTPUT; i++) {
-    std::cout << numbers_vec[i] << ", ";
+  for (int i=0; i < numbers.size() && i < MAX_OUTPUT; i++) {
+    std::cout << numbers[i] << ", ";
   }
   std::cout << "\n- - - - - - - - - - - - - - - - - -" << std::endl;
 
