@@ -78,6 +78,16 @@
         "iterator": "cpp",
         "memory_resource": "cpp",
         "utility": "cpp",
-        "stop_token": "cpp"
+        "stop_token": "cpp",
+        "__tree": "cpp",
+        "future": "cpp",
+        "list": "cpp",
+        "map": "cpp",
+        "set": "cpp",
+        "unordered_set": "cpp",
+        "valarray": "cpp",
+        "hash_map": "cpp",
+        "cinttypes": "cpp",
+        "filesystem": "cpp"
     }
 }
