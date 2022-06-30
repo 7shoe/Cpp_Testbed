@@ -30,7 +30,8 @@ if __name__ == "__main__":
 
     # start time 
     t0 = time.time()
-    N = int(10E6)
+    # N = int(10E6)
+    N = int(10E4)
 
     # do work
     for i in range(N):

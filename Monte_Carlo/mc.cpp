@@ -44,7 +44,7 @@ int main() {
 
     // N = 100, 1000 and 10000.
 
-     // stop the time
+     // start the time
     std::chrono::high_resolution_clock::time_point t1 = std::chrono::high_resolution_clock::now();
 
     // do
